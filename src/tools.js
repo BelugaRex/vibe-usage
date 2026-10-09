@@ -399,6 +399,22 @@ export const TOOLS = [
     dataDir: join(homedir(), '.copilot', 'session-state'),
   },
   {
+    name: 'GitHub Copilot Chat (VS Code)',
+    id: 'copilot-vscode',
+    dataDir: join(getVscodeHostRoots()[0], 'User', 'workspaceStorage'),
+    detectDataDirs: () => {
+      const override = process.env.VIBE_USAGE_VSCODE_CHAT_DIRS?.trim();
+      if (override) return override.split(delimiter).filter(existsSync);
+      const root = process.platform === 'win32'
+        ? join(process.env.APPDATA?.trim() || join(homedir(), 'AppData', 'Roaming'), 'Code')
+        : getVscodeHostRoots()[0];
+      return [
+        join(root, 'User', 'workspaceStorage'),
+        join(root, 'User', 'globalStorage', 'emptyWindowChatSessions'),
+      ].filter(existsSync);
+    },
+  },
+  {
     name: 'CraftAgent',
     id: 'craft-agent',
     dataDir: join(homedir(), '.craft-agent', 'workspaces'),

@@ -3,6 +3,7 @@ import { parse as parseCline } from './cline.js';
 import { parse as parseCodeartsAgent } from './codearts-agent.js';
 import { parse as parseCodex } from './codex.js';
 import { parse as parseCopilotCli } from './copilot-cli.js';
+import { parse as parseCopilotVscode } from './copilot-vscode.js';
 import { parse as parseCraftAgent } from './craft-agent.js';
 import { parse as parseCursor } from './cursor.js';
 import { parse as parseDimAgent } from './dimagent.js';
@@ -40,6 +41,7 @@ export const parsers = {
   'cola': parseCola,
   'grok': parseGrok,
   'copilot-cli': parseCopilotCli,
+  'copilot-vscode': parseCopilotVscode,
   'craft-agent': parseCraftAgent,
   'cursor': parseCursor,
   'dimagent': parseDimAgent,
